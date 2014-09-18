@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flex in CSS</title>
+
+	<style type="text/css">
+	#container {
+		display: flex;
+		flex-direction: row; /* establish the main axis */
+		justify-content: center;  /* how lay out along the main axis */
+		align-items: flex-start; /* how lay out along the cross axis */
+		flex-wrap: wrap;
+	}
+	.item {
+		width: 350px;
+		height: 200px;
+		border: 1px solid #555;
+		font: 14px arial;
+		border: 2px solid pink;
+	}
+	
+	.item:nth-of-type(1) {background-color: #009242;}
+	.item:nth-of-type(2) {background-color: #f1f2f3;}
+	.item:nth-of-type(3) {background-color: #ce2b30;}
+
+	#control {
+		margin: 2em auto;
+	}
+
+	.table {
+		display: table;
+		border: 1px solid #eee;
+	}
+	.cell {
+		display: table-cell;
+		background-color: lightgreen;
+		width: 200px;
+		vertical-align: middle;
+		text-align: center;
+	}
+	</style>
+
+</head>
+<body>
+	<div id="container">
+		<div class="item">flex item</div>
+		<div class="item">flex item</div>
+		<div class="item">flex item</div>
+	</div>
+	<div id="control">
+		<label>justify-content</label>
+		<select id="justifyContent">
+			<option value="flex-start">
+				flex-start
+			</option>
+			<option value="flex-end">
+				flex-end
+			</option>
+			<option value="center">
+				center
+			</option>
+			<option value="space-between">
+				space-between
+			</option>
+			<option value="space-around">
+				space-around
+			</option>
+		</select>
+	</div>
+
+	<div class="table">
+		<div class="cell">
+			<p>Hello world</p>
+		</div>
+	</div>
+
+<script type="text/javascript">
+var justifyContent = document.getElementById('justifyContent');
+var container = document.getElementById('container');
+justifyContent.onchange = function (e) {
+	var self = e.target;
+	container.style.justifyContent = justifyContent[self.selectedIndex].value;
+}
+</script>
+
+</body>
+</html>

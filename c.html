@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>div+css</title>
+	<style type="text/css">
+	#div1 {
+		width: 300px;
+		margin: 3em auto;
+		overflow-x: scroll;
+		background: #eee;
+		padding: 10px;
+		transform: translate(10px, 20px) skew(27deg, 10deg);
+	}
+	#box1, #box2, #box3 {
+		width: 100px;
+		height: 100px;
+		margin: 10px;
+		border: 4px dotted #111;
+	}
+	#box1 {
+		background-color: red;
+		background-clip: border-box;
+	}
+	#box2 {
+		background-color: blue;
+		background-clip: padding-box;
+	}
+	#box3 {
+		background-color: yellow;
+		background-clip: content-box;
+	}
+	</style>
+</head>
+<body>
+<div id="div1">
+	<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+</div>
+
+<div id="box1">
+</div>
+<div id="box2">
+</div>
+<div id="box3">
+</div>
+</body>
+</html>

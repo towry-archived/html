@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>z-index</title>
+
+	<style type="text/css">
+	.b {
+		width: 200px;
+		height: 200px;
+		z-index: 2;
+	}
+	.b:nth-of-type(2n) {
+		background: #ff99cc;
+	}
+	.b:nth-of-type(2n+1) {
+		background: #238cdf;
+	}
+	.a {
+		position: absolute;
+		left: 6em;
+		top: 3em;
+		z-index: 3;
+	}
+	.id2 {
+		background: pink !important;
+	}
+	.id2 + .b {
+		background: #333;
+	}
+	</style>
+</head>
+<body>
+<div class="b a id1"></div>
+<div class="b id2"></div>
+<div class="b"></div>
+<div class="b"></div>
+<div class="b"></div>
+</body>
+</html>

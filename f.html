@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<style type="text/css">
+		.float {
+			float: left;
+		}
+		.box {
+			margin: 10px;
+			width: 100px;
+			height: 100px;
+			background: red;
+			clear: right; /* not work, because not in the same bfc */
+		}
+		.box2 {
+			clear: left;
+		}
+	</style>
+</head>
+<body>
+<div class="bfc">
+	<div class="float box">abcdefg$</div>
+	<div class="float box">higklmn</div>
+	<div class="box2"></div>
+</div>
+<div class="bfc">
+	<div class="box">2</div>
+</div>
+</body>
+</html>
