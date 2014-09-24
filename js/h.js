@@ -5,14 +5,14 @@ var H = window.H || function () {
 
 H.prototype.listen = function (em) {
 	var target = $(em);
-	return new Promise(function (resolve, reject) {
-		target.keydown(function (event) {
-			var code = event.which;
-			if (code == '13') {
-				resolve(target.val());
-			}
-		})
+	target.keydown(function (event) {
+		var code = event.which;
+		if (code == '13') {
+			target.trigger(":message:", { message: target.val() });
+		}
 	})
+
+	return target;
 }
 
 H.prototype.update = function (msg) {
@@ -35,19 +35,15 @@ Chat.prototype.clear = function () {
 
 ;(function (root, $, undefined) {
 	var app = new H();
-	app.listen(".input").then(function (text) {
-		if (text.trim() === "") {
-			// IE8 doesn't support trim
-			return Promise.reject(Error("no content provided."));
+	app.listen(".input").bind(":message:", function (event, data) {
+		var message = data.message;
+		if ($.trim(message) == "") {
+			return;
 		} else {
-			text = "Received: " + text;
-			return Promise.resolve(text);
+			var date = new Date;
+			var formatDate = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+			message = '<span class="datetime">' + formatDate + "</span> <span class='nil'>recevied:</span> " + message;
+			app.update(message);
 		}
-	}, function (err) {
-		console.log(err);
-	}).then(function (text) {
-		app.update(text);
-	}, function (err) {
-		console.log(err);
 	})
 })(this, jQuery);
